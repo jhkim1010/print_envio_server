@@ -12,7 +12,7 @@ module.exports.ReadDatas = async () => {
     // quiero conectar a la base de datos para leer los datos
 
     await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
+    console.log(`Connection has been established successfully con dbase ${process.env.DATABASE_NAME}.`);
 
     // Sync all defined models to the DB
     await sequelize.sync();
