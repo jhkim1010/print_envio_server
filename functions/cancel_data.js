@@ -3,7 +3,7 @@ const EnvioImp = require("../models/envio_imp");
 // const Clientes = require("../models/cliente");
 const { sequelize } = require("../database/database");
 
-module.exports.DeleteData = async (id) => {
+module.exports.CancelData = async (id) => {
 
   try {
     // quiero conectar a la base de datos para leer los datos
@@ -15,15 +15,14 @@ module.exports.DeleteData = async (id) => {
     // await sequelize.sync();
 
     // Find all entries in the EnvioImp table
-    const deletedEnvioImpData = await EnvioImp.update(
-      { is_deleted: true },
+    const deletedEnvioImpData = await EnvioImp.destroy(
       {
         where: {
           id_envio_imp: id,
         }
       }
     );
-    // console.log("[DeleteData];Updated Data as deleted :", JSON.stringify(deletedEnvioImpData, null, 2));
+    console.log("[CancelData];Canceled Data :", JSON.stringify(deletedEnvioImpData, null, 2));
 
     return deletedEnvioImpData;
   } catch (error) {

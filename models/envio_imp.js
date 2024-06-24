@@ -23,6 +23,14 @@ const Envio_Imp = sequelize.define('envio_imp', {
     cant: {
         type: DataTypes.INTEGER,
         allowNull: false
+    }, 
+    is_deleted : {
+        type: DataTypes.BOOLEAN, 
+        defaultValue: false
+    }, 
+    date : {
+        type: DataTypes.DATE, 
+        defaultValue: DataTypes.NOW
     }
 }, {
     timestamps: false , 

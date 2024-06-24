@@ -5,6 +5,7 @@ const { Server } = require("socket.io");
 const cors = require("cors")
 const {ReadDatas} = require("./functions/read_datas.js")
 const {DeleteData} = require("./functions/delete_data.js")
+const {CancelData} = require("./functions/cancel_data.js")
 const { pgClient } = require('./database/database.js');
 
 app.use(cors()); 
@@ -51,7 +52,18 @@ io.on("connection", (socket) => {
         }).catch(error => {
             console.log(error); 
         });  
-        console.log("After Delete_data")
+        // console.log("After Delete_data")
+    }); 
+
+    socket.on("cancel_data", (data) => {
+        // console.log(data)
+        // console.log("data to delete : ", data.id_envio_imp, typeof data.id_envio_imp)
+        CancelData(data.id_envio_imp).then(data_daleted => {
+            console.log(typeof data_daleted); 
+        }).catch(error => {
+            console.log(error); 
+        });  
+        console.log("After Cancel_data")
     }); 
     
     socket.on("get_data", (data) => {
