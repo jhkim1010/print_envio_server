@@ -35,7 +35,7 @@ module.exports.ReadDatas = async () => {
       include: Clientes,
       required: true,
     });
-    console.log("All envio_imp data:", JSON.stringify(envioImpData, null, 2));
+    // console.log("All envio_imp data:", JSON.stringify(envioImpData, null, 2));
 
     return envioImpData;
   } catch (error) {

@@ -7,6 +7,7 @@ const {ReadDatas} = require("./functions/read_datas.js")
 const {DeleteData} = require("./functions/delete_data.js")
 const {CancelData} = require("./functions/cancel_data.js")
 const { pgClient } = require('./database/database.js');
+require("dotenv").config(); 
 
 app.use(cors()); 
 
@@ -43,6 +44,8 @@ io.on("connection", (socket) => {
     // console.log(`User Connected: ${socket.id}`);
 //   console.log(socket)
     console.log(`User connected : ${socket.id}`)  
+    socket.emit("configurations", {"is_print_date": process.env.PRINT_DATE_INFO}); 
+    console.log("Config socket")
 
     socket.on("delete_data", (data) => {
         // console.log(data)
