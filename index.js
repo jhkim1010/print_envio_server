@@ -52,6 +52,7 @@ io.on("connection", (socket) => {
       is_print_date: process.env.PRINT_DATE_INFO,
     });
     console.log("Config socket sent");
+    console.log(process.env.PRINT_DATE_INFO);
   });
 
   // socket.on("delete_data", (data) => {
